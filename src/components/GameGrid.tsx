@@ -4,25 +4,31 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import { GameQuery } from "../App";
 
 
+interface Props {
+    gameQuery: GameQuery
+}
 
-const GameGrid = () => {
 
-    const { error, data, isLoading } = useGames();
-    const skeletons = [1, 2, 3, 4, 5, 6];
+const GameGrid = ({ gameQuery }: Props) => {
+
+    const { error, data, isLoading } = useGames(gameQuery);
+    const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     return (
         <>
             {error && <Text>{error}</Text>}
             <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding='10px' spacing={3}>
+
                 {isLoading && skeletons.map(skeleton =>
                     <GameCardContainer key={skeleton} >
-                        <GameCardSkeleton key={skeleton} />
+                        <GameCardSkeleton />
                     </GameCardContainer>)}
                 {data.map(game => (
                     <GameCardContainer key={game.id} >
-                        <GameCard key={game.id} game={game} />
+                        <GameCard game={game} />
                     </GameCardContainer>
                 ))}
             </SimpleGrid>
