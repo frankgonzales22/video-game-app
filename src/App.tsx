@@ -37,7 +37,7 @@ function App() {
 
         <GridItem area='nav'>
             {/* {JSON.stringify(selectedGenre)} */}
-            <NavBar />
+            <NavBar inputSearch={(searchText) => setGameQuery({...gameQuery, searchText})}/>
         </GridItem>
         <Show above='lg'>
 
@@ -46,10 +46,9 @@ function App() {
             </GridItem>
         </Show>
         <GridItem area='main'>
-            {/* <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} /> */}
             <HStack paddingLeft={2} marginBottom={5}>
                 <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} />
-                <SortSelector onSelectOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
+                <SortSelector sortOrder={gameQuery.sortOrder} onSelectOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
             </HStack>
             <GameGrid gameQuery={gameQuery} />
         </GridItem>
