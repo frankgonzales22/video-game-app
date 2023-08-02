@@ -1,7 +1,7 @@
 
 import genres from "../data/genres";
+import APIClient from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
-import apiClient, { FetchResponse } from "../services/api-client";
 
 
 export interface Genres {
@@ -12,22 +12,15 @@ export interface Genres {
 
 }
 
-// const useGenres = () => ({data : genres, isLoading : false, error : null})
-
+const apiClient = new APIClient<Genres>('/genres')
 const useGenres = () => {
-
-    // const fetchGenres = () => (
-    //     axios
-    //         .get<Genres[]>('https://api.rawg.io/api/games?genres=4&key=a38bb52c60504630a5e7136f1d49e649')
-    //         .then(res => res.data)
-    // )
 
     return useQuery({
         queryKey: ['genres'],
-        queryFn: () => apiClient.get<FetchResponse<Genres>>('/genres').then(res => res.data),
+        queryFn:  apiClient.getAll,
         staleTime: 5 * 60 * 1000,
         refetchOnWindowFocus: false,
-        initialData: { count: genres.length, results: genres }
+        // initialData: { count: genres.length, results: genres }
     })
 
 
