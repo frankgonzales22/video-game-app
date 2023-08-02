@@ -34,11 +34,11 @@ const GameGrid = ({ gameQuery }: Props) => {
             dataLength={fetchPageCount}
             next={ () => fetchNextPage()}
             hasMore={!!hasNextPage}
-            loader={<Spinner/>}
+            loader={<Spinner />}
             
             
             >
-                <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding='5px' spacing={6}>
+                <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} padding='5px' spacing={5}>
 
                     {isLoading && skeletons.map(skeleton =>
                         <GameCardContainer key={skeleton} >
