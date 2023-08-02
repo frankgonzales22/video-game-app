@@ -76,3 +76,12 @@ button:focus-visible {
 form {
   width: 100% ;
 }
+
+body .css-bzomup{
+  display: inline-block;
+}
+
+body .css-bzomup > * {
+  margin-right: 8px;
+  
+}
