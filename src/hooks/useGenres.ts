@@ -20,7 +20,7 @@ const useGenres = () => {
         queryFn:  apiClient.getAll,
         staleTime: 5 * 60 * 1000,
         refetchOnWindowFocus: false,
-        // initialData: { count: genres.length, results: genres }
+        initialData: genres
     })
 
 
