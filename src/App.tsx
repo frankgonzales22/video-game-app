@@ -39,7 +39,10 @@ function App() {
             {/* {JSON.stringify(selectedGenre)} */}
             <NavBar inputSearch={(searchText) => setGameQuery({...gameQuery, searchText})}/>
         </GridItem>
-        <Show above='lg'>
+        <Show 
+        above='lg'
+    
+        >
 
             <GridItem area='aside' paddingX={5}>
                 <GenreList genreFontWeightId={gameQuery.genreId} selectedGenres={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })} />
